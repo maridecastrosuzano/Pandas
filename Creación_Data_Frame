@@ -1,0 +1,72 @@
+# Creación de DataFrame vacio
+
+df = pd.DataFrame()
+
+
+# Creación a partir de una lista de diccionarios
+
+import pandas as pd
+
+lista_de_diccionario = [
+    {"nombre": "Ana", "profesion": "Economista", "edad": 35},
+    {"nombre": "Carla", "profesion": "Ingeniero", "edad": 38},
+    {"nombre": "Pedro", "profesion": "Carpintero", "edad": 39},
+    {"nombre": "Joana", "profesion": "Contador", "edad": 25},
+    {"nombre": "Marcos", "profesion": "Arquitecto", "edad": 28},
+    {"nombre": "Glendy", "profesion": "Nutricionista", "edad": 43},
+    {"nombre": "Manuel", "profesion": "Mecanico", "edad": 36},
+    {"nombre": "Carolina", "profesion": "Veterinaria", "edad": 32},
+    {"nombre": "Andrea", "profesion": "Medico", "edad": 46},
+    {"nombre": "José", "profesion": "Administrador", "edad": 45}
+]
+
+profesiones = pd.DataFrame(lista_de_diccionario)
+profesiones
+
+
+# Creación a partir de una lista de listas (lista anidadas)
+
+import pandas as pd
+
+lista_anidada = [
+    ["Ana", "Economista", 35],
+    ["Carla", "Ingeniero", 38],
+    ["Pedro", "Carpintero", 39],
+    ["Joana", "Contador", 25],
+    ["Marcos", "Arquitecto", 28],
+    ["Glendy", "Nutricionista", 43],
+    ["Manuel", "Mecanico", 36],
+    ["Carolina", "Veterinaria", 32],
+    ["Andrea", "Medico", 46],
+    ["José", "Administrador", 45]
+]
+
+profesiones = pd.DataFrame(lista_anidada, columns = ["Nombre", "Profesión", "Edad"])
+profesiones
+
+
+Creación a partir de una lista de filas
+
+lista = [[1,"a",True],[2,"b",False],[3,"c",True]]
+columna = ["columna_1","columna_2","columna_3"]
+
+df2 = pd.DataFrame(lista, columns=columna)
+df2
+
+
+#Creación a partir de un diccionario
+
+datos = {"nombre":["Ana", "Luis", "Carlos"], "profesion": ["Economista", "Actor", "Administrador"], "ciudad": ["Roma", "Madrid", "Sevilla"]}
+
+df3 = pd.DataFrame(datos)
+df3
+
+
+# Creación a partir de un Numpy array
+
+import numpy as np
+
+arr = np.array([[1,2], [3,4]])
+
+df4 = pd.DataFrame(arr, columns=["A", "B"])
+df4
