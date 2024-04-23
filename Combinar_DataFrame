@@ -1,0 +1,34 @@
+# Creación primer Data Frame
+
+df1 = pd.DataFrame({"mes":"enero", "ventas": np.random.randint(1,100,5)})
+df1
+
+
+# Creación segundo Data Frame
+
+df2 = pd.DataFrame({"mes":"febrero", "ventas": np.random.randint(1,100,5)})
+df2
+
+
+# Combinación de df1 +df2
+
+df3 = pd.concat([df1,df2])
+df3
+
+
+# Reordenando el indice, que quedó duplicado
+
+df3 = df3.reset_index(drop=True)
+df3
+
+
+# Creamos otro dataframe para combinar con el anterior
+
+df4 = pd.DataFrame({"mes": "marzo", "ventas": np.random.randint(1,100,1)})
+df4
+
+
+# Combinación de df3 +df4
+
+df5 = pd.concat([df3,df4], ignore_index=True) # al indicar ignore_index = True, estamos dando la indicación de que no tome el nuevo indice del df4, sino que haga continuidad con el anterior.
+df5
