@@ -1,0 +1,29 @@
+CREAR NUEVAS COLUMNAS
+
+# Data Frame existente
+df_dias = pd.DataFrame({"dias_laborables": ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"]})
+df_dias
+
+# Creación de nueva columna
+df_dias["dias_no_laborables"] = ["Sábado", "Domingo", "", "", ""] # la columna debe tener el mismo número de elementos que las columnas del data frame existente
+df_dias
+
+
+CREAR NUEVAS COLUMNAS COMO RESULTADO DE ALGUNA OPERACIÓN SOBRE COLUMNA O ENTRE COLUMNAS
+
+# Data Frame existente
+df_nombres = pd.DataFrame({"nombre": ["Juan", "Maria", "Manuel", "Javier", "Vanessa"]})
+df_nombres
+
+# Agregar prefijos a cada valor de cada columna
+df_nombres["nombre_prefijo_version_1"] = "Sr." + df_nombres["nombre"]
+df_nombres["nombre_prefijo_version_2"] = ["Sr.","Sra.","Sr.","Sr.","Sra."] + df_nombres["nombre"]
+df_nombres
+
+
+AGREGAR UNA COLUMNA, GENERANDO UNA LISTA DE VALORES ALEATORIOS
+
+import numpy as np
+
+df_nombres["edad"] = np.random.randint(18,100,5)
+df_nombres
