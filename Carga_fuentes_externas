@@ -1,0 +1,43 @@
+# Cargar desde un archivo csv
+
+import pandas as pd
+
+df = pd.read_csv("Bakery.csv", delimiter = ",")
+df.head(10)
+
+
+# Cargar desde un archivo excel
+import pandas as pd
+
+df = pd.read_excel("Bakery.xlsx")
+df.head(10)
+
+
+# Cargar desde un archivo pickle
+
+import pandas as pd
+
+df = pd.read_pickle("Bakery.pkl")
+df.head(10)
+
+IMPORTANTE:
+
+1. Verificar la ruta del archivo:
+
+- Ruta absoluta: Asegúrate de usar la ruta absoluta del archivo CSV. 
+Esto significa incluir la unidad de disco, la carpeta y el nombre del archivo. 
+Por ejemplo, si el archivo está en tu disco duro C:, la ruta sería C:\carpeta\resumen_resultados_astronautas.csv.
+
+- Ruta relativa: 
+Si deseas usar una ruta relativa, asegúrate de que esté en relación con el script de Python. 
+Por ejemplo, si el archivo está en la misma carpeta que el script, puedes usar 'resumen_resultados_astronautas.csv'.
+
+2. Usar os.path.join:
+
+Para evitar confusiones con las rutas, puedes usar la función os.path.join de la biblioteca os para construir la ruta completa. Por ejemplo:
+
+import os
+import pandas as pd
+
+ruta_archivo = os.path.join("carpeta", "resumen_resultados_astronautas.csv")
+astronautas = pd.read_csv(ruta_archivo)
