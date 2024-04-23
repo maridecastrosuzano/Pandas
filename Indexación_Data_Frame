@@ -1,0 +1,23 @@
+# Indexación por posición, usando iloc
+profesionales.iloc[2,3]
+
+podemos usar lista de filas y columnas
+profesionales.iloc[[0,1,2,3,4,5,6],[0,1,2,3]]
+
+podemos usar rangos de filas y columnas
+profesionales.iloc[0:3, 0:5]
+
+
+# Indexación por etiquetas, usando loc
+profesionales.loc[["Pedro", "Marcos", "Manuel", "José"],["Estado Civil"]]
+
+También podemos usar rango de etiquetas
+profesionales.loc["Ana":"Carolina", "Profesión":"Estado Civil"]
+
+
+# Indexación boolena
+profesionales[(profesionales["Edad"]>35) & (profesionales["Estado Civil"]=="soltero")]
+
+
+# Metódo query, permite realizar una indexación boolena más sencilla
+profesionales.query("Edad > 30 and Peso > 75")
