@@ -1,0 +1,70 @@
+Combinar y unir datos
+
+EJEMPLO 1
+
+import pandas as pd
+import numpy as np
+
+# Defininos 2 Data Frame:
+
+# Primero, uno con rubros y un identificador de rubro:
+rubros = ["vestuario", "calzado", "hogar", "libros", "cosmética"]
+n_rubros = len(rubros)
+df_rubros = pd.DataFrame({"id_rubro":range(0,n_rubros),"des_rubro":rubros})
+df_rubros
+
+# Segundo, creamos un DataFrame con 100 ventas, cada una de ellas tendrá un identificador (id_venta), un número que alude al rubro de la venta, el precio del articulo vendido y la cantidad de articulos comprados
+numero_ventas = 100
+df_ventas = pd.DataFrame({"id_venta":range(0,numero_ventas),
+                          "rubro":np.random.randint(0,n_rubros,numero_ventas),
+                          "precio": np.random.randint(2400,10000,numero_ventas),
+                          "cantidad":np.random.randint(1,7,numero_ventas)}
+                         )
+df_ventas
+
+
+# Unir los dos DataFrame, usando merge()
+
+df_merged = df_ventas.merge(df_rubros, left_on="rubro", right_on="id_rubro", validate="many_to_one") 
+df_merged
+
+
+EJEMPLO 2
+
+# Creamos 2 Data Frame: uno de usuarios y otro de pedidos
+
+import pandas as pd
+import numpy as np
+
+# Primer Data Frame
+df_usuarios = pd.DataFrame({
+    "id_usuario": [1,2,3,4,5,6],
+    "nombre_usuario": ["Angel", "Luis", "Antonio", "Maria", "Luisa", "Marcos"],
+    "edad": [25, 18, 35, 19, 24, 45]
+})
+
+df_usuarios
+
+# Segundo Data Frame
+df_pedidos = pd.DataFrame({
+    "id_pedido": [1,2,3,4,5,6,7,8],
+    "id_usuario": [1,2,3,3,4,4,4,5],
+    "fecha":["2022-01-01","2022-01-01","2022-01-02","2022-01-02","2022-01-02","2022-01-03","2022-01-03","2022-01-04"],
+    "producto":["A","B", "A","B","A","A","B","A"],
+    "cantidad":[10,5,12,8,5,6,6,15],
+    "precio":[100,50,120,80,150,150,100,90]
+})
+df_pedidos
+
+# Queremos un informe dettalado de los usuarios con sus pedidos, incluso aquellos usuarios que no han realizado ninguna compra y todos los pedidos independientemente de si tienen usuario asociado o no.
+# En este caso usamos el outer join
+
+df_merged = df_pedidos.merge(df_usuarios, on = "id_usuario", how = "outer")
+df_merged
+
+
+# Creación de columnas calculadas:
+
+df_merged ["monto_venta"] = df_merged["precio"] * df_merged["cantidad"]
+df_merged
+
