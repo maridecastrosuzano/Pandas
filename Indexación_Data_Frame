@@ -1,5 +1,5 @@
 # Indexación por posición, usando iloc
-profesionales.iloc[2,3]
+profesionales.iloc[2,3] # lo que está a la izquierda de la coma hace referencia al valor de la fila, y lo que está despues de la coma hace referencia al de la columna.
 
 podemos usar lista de filas y columnas
 profesionales.iloc[[0,1,2,3,4,5,6],[0,1,2,3]]
