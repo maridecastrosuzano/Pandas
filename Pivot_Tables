@@ -1,0 +1,51 @@
+import pandas as pd
+
+# Creacion de la pivot table
+
+df_pivot_reporte1 = pd.pivot_table(
+    data = df_merged, # Dataframe
+    index = "nombre_usuario", # Columna(s) del DataFrame original que queremos como indice en la tabla de resultados
+    values = "monto_venta", # valores a los que les aplicaremos aggfunc
+    aggfunc ="sum", # función a aplicar a la columna de valores
+    margins = True # generar una fila/columna de totales
+)
+df_pivot_reporte1
+
+
+# Para transformar los indices que tenemos en una columna normal:
+df_pivot_reporte1.reset_index()
+
+
+# Transposición de DataFrame
+# Una forma es usando .T
+df_pivot_reporte1.T
+
+# Otra forma de trasponer es usando transpose()
+df_pivot_reporte1.transpose()
+
+
+# Funciones lambda
+
+EJERCICIO 1
+df_pivot_reporte2 = pd.pivot_table(
+    data = df_merged,
+    index = "producto",
+    values = "monto_venta",
+    aggfunc = lambda x: x.max() - x.min(), # creamos una función
+    margins = True
+)
+df_pivot_reporte2 = df_pivot_reporte2.rename(columns = {"monto_venta":"rango_venta"})
+df_pivot_reporte2
+
+
+EJERCICIO 2
+df_pivot_reporte3 = pd.pivot_table(
+    data = df_merged,
+    index = "producto",
+    values = "monto_venta",
+    aggfunc = lambda x: (round((x.sum() / df_merged["monto_venta"].sum())*100,2)), # creamos una función para calcular el porcentaje de ventas de cada producto respecto al total de ventas
+    margins = True
+)
+
+df_pivot_reporte3 = df_pivot_reporte3.rename({"monto_venta":"porcentaje_venta"})
+df_pivot_reporte3
