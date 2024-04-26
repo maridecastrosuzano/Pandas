@@ -14,6 +14,17 @@ Es un repositorio de apoyo que contiene información sobre:
 
 -Tablas Pivote, trasposiciones y funciones lambda.
 
+-Transformación y limpieza de datos.
+
+-Método apply.
+
+-Reemplazo de datos.
+
+-Discretización de datos (método pd.cut(), método np.where(), método pd.get_dummies()
+
+-Manipulación de strings.
+
+-Manipulación de Data & Time.
 
 Estos conocimientos los he adquirido con la realización del curso "Programación con Python para el análisis de datos" disponible gratuitamente en Desafio Latam.
 
