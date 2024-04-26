@@ -18,3 +18,33 @@ df["mes"] = df["Fecha"].dt.month
 df["nombre_mes"] = df["Fecha"].dt.month_name()
 
 df
+
+
+# cambiar formato de fechas
+"""
+En pandas el formato es YYYY-MM-DD.
+Por ejemplo tenemos un DataFrame con un formato diferente (dd-mm-yyyy). 
+Podemos transformarlo al formato de Pandas de la siguiente manera:
+"""
+
+import pandas as pd
+
+data = {"Fecha": ["30-01-2022", "01-12-2021","15-02-2024","30-10-2022","04-03-2023"]}
+df= pd.DataFrame(data)
+
+df["Fecha"] = pd.to_datetime(df["Fecha"], format = "%d-%m-%Y")
+
+print(df["Fecha"])
+
+
+# filtrado por fecha
+
+import pandas as pd
+
+data = {"Fecha": ["2022-01-30", "2022-01-15","2022-01-12","2022-10-30","2023-03-04"]}
+df= pd.DataFrame(data)
+
+df["Fecha"] = pd.to_datetime(df["Fecha"])
+
+df_mayo = df[(df["Fecha"] >= "2022-01-01") & (df["Fecha"] <= "2022-01-31")]
+df_mayo
