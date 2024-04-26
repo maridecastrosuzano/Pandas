@@ -1,0 +1,31 @@
+import pandas as pd
+
+data = {
+    "Nombre": ["Andres", "Luis", "Carolina"],
+    "Edad": [28,35,36],
+    "Puntaje": [2000, 500, 3600]
+}
+
+df = pd.DataFrame(data)
+df
+
+
+df["Puntaje"].apply(lambda x: x + 1)
+
+# también podemos pedir que sume un 1 a cada valor de la columna si el valor es mayor a 5000 (y si no dejarlo como estaba)
+
+df["Puntaje"].apply(lambda x: x + 1 if x > 3000 else x)
+
+
+# applymap()
+"""
+El método applymap() permite apuntar a cada celda del Data Frame por separado. 
+A diferencia de apply() que se aplica a lo largo de un eje de un DataFrame (fila o columna). 
+La funcion applymap() se aplica a cada elemento de manera individual.
+Por ejemplo si queremos transformar a mayúscula si la celda es string, o dividir por 100 si no lo es, se aplica el siguiente código:
+"""
+
+df.applymap(lambda x: x.upper() if type(x) == str else x/100)
+
+
+
