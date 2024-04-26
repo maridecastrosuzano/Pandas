@@ -1,0 +1,55 @@
+# creacuón DataFrame
+
+import pandas as pd
+
+data = {'producto':['camiseta negro S','camiseta rojo S','camiseta negro S','camiseta azul L','camiseta azul M','pantalón azul M','zapatos negro L','zapatos rojo L','zapatos azul L'],
+        'precio': np.random.randint(1000, 5000, 9)}
+
+df = pd.DataFrame(data)
+df
+
+
+# Por ejemplo, queremos reemplazar "camiseta negro S" por "camiseta agotada. Usaremos replace()
+
+df.replace("camiseta negro S","camiseta - agotado")
+
+
+# Reemplazar utilizando un diccionario
+
+replace_dict = {"camiseta negro S":"camiseta - agotado", "pantalón azul M": "pantalón - agotado"}
+df_replaced = df.replace(replace_dict)
+df_replaced
+
+
+# Reemplazar utilizando expresiones regulares (regex), 
+# Es una herramienta poderosa para buscar y manipular cadenas de texto en Python y otros lenguajes de programación a partir de una secuencia de caracteres, que define un patrón de búsqueda
+
+df_replaced.replace({"producto":r"agotad"}, {"producto":"descontinuad"}, regex=True)
+
+
+EJERCICIO
+
+import pandas as pd
+import numpy as np
+
+data = {"producto": ["A","B","C","D",np.nan,np.nan,"G","H"], "precio":[100,200,300,400,500,600,700,800]}
+
+df = pd.DataFrame(data)
+df
+
+
+# Valores nulos: opción 1
+df["producto"].fillna("sin información")
+
+
+# Valores nulos: opción 2
+df["producto"] = df["producto"].fillna({4:"E",5:"F"})
+df
+
+
+# reemplazo de datos: opción 1
+df.replace("A","Producto A")
+
+
+# reemplazo de datos: opción 2
+df.replace({"A": "Producto A", "B": "Producto B","C": "Producto C","D": "Producto D","E": "Producto E","F": "Producto F","G": "Producto G","H": "Producto H"})
