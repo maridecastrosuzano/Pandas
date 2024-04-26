@@ -20,7 +20,7 @@ Es un repositorio de apoyo que contiene información sobre:
 
 -Reemplazo de datos.
 
--Discretización de datos (método pd.cut(), método np.where(), método pd.get_dummies()
+-Discretización de datos: método pd.cut(), método np.where(), método pd.get_dummies()
 
 -Manipulación de strings.
 
