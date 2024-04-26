@@ -1,0 +1,33 @@
+TRANSFORMACIÓN Y LIMPIEZA DE DATOS
+
+DUPLICADOS
+
+import pandas as pd
+
+# Creación de DataFrame
+df_amigos = pd.DataFrame ({
+    "Nombre": ["Marta","Julio","Carla","Andrés","Mariana","Julio", "Carla"],
+    "Edad": [25,18,42,22,63,18,23],
+    "Ciudad":["Caracas", "Valencia", "Margarita", "La Guaira", "Puerto Ordaz", "Valencia","Margarita"]
+}
+)
+df_amigos
+
+
+# eliminar duplicados
+df_amigos_sin_duplicados = df_amigos.drop_duplicates()
+df_amigos_sin_duplicados
+
+
+# eliminar todas las filas duplicadas basadas en "Nombre" y "Ciudad"
+df_amigos_sin_duplicados = df_amigos.drop_duplicates(subset=["Nombre","Ciudad"])
+df_amigos_sin_duplicados
+
+
+# Podemos encontrar aquellas filas duplicadas usando duplicated(), y nos devolverá los valores duplicados que existen según los parámetros duplicados
+df_amigos [df_amigos.duplicated()]
+
+or
+
+df_amigos [df_amigos.duplicated(subset=["Nombre","Ciudad"])]
+
