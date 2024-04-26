@@ -1,0 +1,51 @@
+TRANSFORMACIÓN Y LIMPIEZA DE DATOS
+
+DATOS FALTANTES
+
+import pandas as pd
+import numpy as np
+
+
+# creación DataFrame
+df = pd.DataFrame({
+    "A":[1,2,np.nan,4],
+    "B":[5,np.nan,np.nan,8],
+    "C":[9,10,11,12]
+})
+df
+
+
+# isando isna(), nos arroja True donde exista un dato faltante y False en caso contrario
+
+df.isna() 
+
+
+# Podemos combinar las posibilidades para obtener diferentes resultados, por ejemplo:
+obtener la cantidad de nulos en cada columna
+
+df.isna().sum()
+
+
+# eliminar las filas que al menos continen un valor NAN. El valor axis es 0 por defecto
+
+df.dropna(axis=0)
+
+
+# eliminar todas las columnas que tienen al menos un NAN
+
+df.dropna(axis=1)
+
+
+# Reemplazar los valores NAN por uno que definamos usando fillna()
+
+df.fillna(0)
+
+
+# obtener los tipos de datos de las columnas originales del df
+
+df.dtypes
+
+
+# Obtener los tipos de datos de las columnas luego de haber reemplazado los NAN por un string
+
+df.fillna("p").dtypes
