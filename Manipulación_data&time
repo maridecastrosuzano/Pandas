@@ -1,0 +1,20 @@
+import pandas as pd
+
+# cración DataFrame
+data = {"Empleado": ["Ana", "Juan","Marcos", "Petra", "Lucia"], "Fecha_incorporacion": ["2022-01-30", "2021-12-01","2024-02-15","2022-10-30","2023-03-04"]}
+df= pd.DataFrame(data)
+df
+
+# convertimos fecha y hora en Pandas
+df["Fecha_incorporacion"] = pd.to_datetime(df["Fecha_incorporacion"])
+
+# extraer año de la fecha
+df["año"] = df["Fecha"].dt.year
+
+# extraer el mes de la fecha
+df["mes"] = df["Fecha"].dt.month
+
+# extraer el nombre del mes de la fecha
+df["nombre_mes"] = df["Fecha"].dt.month_name()
+
+df
