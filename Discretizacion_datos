@@ -1,0 +1,78 @@
+DISCRETIZACION DE DATOS 
+
+
+# Método pd.cut()
+
+import pandas as pd
+
+# creación del DataFrame
+df = pd.DataFrame({"edad": [20,25,30,35,40,45,50,55,60,65]})
+
+# discretizar los datos en intervalos
+intervalos = [0,30,40,50,100] # definir los valores deseados
+
+# etiquetas para las categorías
+etiquetas = [1,2,3,4]
+
+# discretizar y devolver valores en lugar de intervalos
+df["grupo edad"] = pd.cut(df["edad"], bins=intervalos, labels=etiquetas)
+
+# convertir columna resultante a númerica
+df["grupo edad"] = pd.to_numeric(df["grupo edad"])
+
+df
+
+
+# También podemos convertir una columna númerica usando astype()
+
+import pandas as pd
+
+# creación del DataFrame
+df = pd.DataFrame({"edad": [20,25,30,35,40,45,50,55,60,65]})
+
+# discretizar los datos en intervalos
+intervalos = [0,30,40,50,100] # definir los valores deseados
+
+# etiquetas para las categorías
+etiquetas = [1,2,3,4]
+
+# discretizar y devolver valores en lugar de intervalos
+df["grupo edad"] = pd.cut(df["edad"], bins=intervalos, labels=etiquetas)
+
+# convertir columna resultante a númerica
+df.astype({"grupo edad": "int64"}).dtypes
+
+df
+
+
+# Método np.where()
+
+import pandas as pd
+
+# creación DataFrame
+data = {"Nombre": ["Ana", "Juan","Marcos", "Petra", "Lucia"], "Ingresos": [20000, 45000,50000,85000,63000]}
+df= pd.DataFrame(data)
+
+# definir un umbral para clasificar los ingresos
+umbral = 50000
+
+# utilizar np.where() para clasificar los ingresos
+df["Clasificacion"] = np.where(df["Ingresos"] >= umbral, "Alto","Bajo")
+
+df
+
+
+# Método pd.get_dummies()
+
+import pandas as pd
+
+data = {"Nombre": ["Ana", "Juan","Marcos", "Petra", "Lucia"], "Nacionalidad": ["N", "N","E","E","N"]}
+df= pd.DataFrame(data)
+
+pd.get_dummies(df, columns = ["Nacionalidad"])
+
+
+# Podemos eliminar una columna, puesto que es repetitivo. Usamos drop_first() y se elimina la primera columna y queda consolidado
+
+pd.get_dummies(df, columns = ["Nacionalidad"],drop_first=True)
+
