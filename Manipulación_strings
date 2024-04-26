@@ -1,0 +1,11 @@
+import pandas as pd
+
+data = {"Pasajero": ["Ana", "Juan","Marcos", "Petra", "Lucia"], "Nacionalidad": ["N", "N","E","E","N"]}
+df= pd.DataFrame(data)
+
+
+# convirtiendo a minúscula
+df["Pasajero"].str.lower()
+
+# convirtiendo a mayúscula
+df["Pasajero"].str.upper()
